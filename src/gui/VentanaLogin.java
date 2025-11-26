@@ -9,16 +9,13 @@ public class VentanaLogin extends JFrame implements ActionListener {
     
     private static final long serialVersionUID = 1L;
     
-    // Componentes de la interfaz
     private JTextField txtUsuario;
     private JPasswordField txtPassword;
     private JButton btnIngresar, btnRegistrar;
     private JLabel lblTitulo, lblUsuario, lblPassword;
     
-    // Almacenamiento de usuarios (usuario -> contraseña)
     private static HashMap<String, String> usuarios = new HashMap<>();
     
-    // Inicializar con un usuario por defecto
     static {
         usuarios.put("admin", "admin123");
     }
@@ -29,6 +26,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
         setSize(400, 300);
         setLayout(null);
         setLocationRelativeTo(null);
+        setResizable(false);
         getContentPane().setBackground(new Color(240, 240, 240));
         
         // Título
@@ -66,8 +64,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
         btnIngresar.setBounds(80, 190, 120, 35);
         btnIngresar.setFont(new Font("Arial", Font.BOLD, 14));
         btnIngresar.setBackground(new Color(46, 204, 113));
-        btnIngresar.setForeground(Color.WHITE);
+        btnIngresar.setForeground(Color.BLACK);
         btnIngresar.setFocusPainted(false);
+        btnIngresar.setBorderPainted(true);
+        btnIngresar.setOpaque(true);
         btnIngresar.addActionListener(this);
         add(btnIngresar);
         
@@ -76,8 +76,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
         btnRegistrar.setBounds(210, 190, 120, 35);
         btnRegistrar.setFont(new Font("Arial", Font.BOLD, 14));
         btnRegistrar.setBackground(new Color(52, 152, 219));
-        btnRegistrar.setForeground(Color.WHITE);
+        btnRegistrar.setForeground(Color.BLACK);
         btnRegistrar.setFocusPainted(false);
+        btnRegistrar.setBorderPainted(true);
+        btnRegistrar.setOpaque(true);
         btnRegistrar.addActionListener(this);
         add(btnRegistrar);
         
@@ -119,10 +121,12 @@ public class VentanaLogin extends JFrame implements ActionListener {
                     "Acceso exitoso", 
                     JOptionPane.INFORMATION_MESSAGE);
                 
-                // Abrir ventana principal
+                // Cerrar ventana de login
                 this.dispose();
+                
+                // Abrir ventana principal pasando el nombre de usuario
                 SwingUtilities.invokeLater(() -> {
-                    VentanaPrincipal vp = new VentanaPrincipal();
+                    VentanaPrincipal vp = new VentanaPrincipal(usuario);
                     vp.setVisible(true);
                 });
             } else {
@@ -149,6 +153,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
         dialogRegistro.setSize(380, 280);
         dialogRegistro.setLayout(null);
         dialogRegistro.setLocationRelativeTo(this);
+        dialogRegistro.setResizable(false);
         dialogRegistro.getContentPane().setBackground(new Color(240, 240, 240));
         
         // Título
@@ -197,8 +202,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
         btnGuardarRegistro.setBounds(80, 200, 100, 30);
         btnGuardarRegistro.setFont(new Font("Arial", Font.BOLD, 13));
         btnGuardarRegistro.setBackground(new Color(46, 204, 113));
-        btnGuardarRegistro.setForeground(Color.WHITE);
+        btnGuardarRegistro.setForeground(Color.BLACK);
         btnGuardarRegistro.setFocusPainted(false);
+        btnGuardarRegistro.setBorderPainted(true);
+        btnGuardarRegistro.setOpaque(true);
         dialogRegistro.add(btnGuardarRegistro);
         
         // Botón Cancelar
@@ -206,8 +213,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
         btnCancelar.setBounds(190, 200, 100, 30);
         btnCancelar.setFont(new Font("Arial", Font.BOLD, 13));
         btnCancelar.setBackground(new Color(231, 76, 60));
-        btnCancelar.setForeground(Color.WHITE);
+        btnCancelar.setForeground(Color.BLACK);
         btnCancelar.setFocusPainted(false);
+        btnCancelar.setBorderPainted(true);
+        btnCancelar.setOpaque(true);
         dialogRegistro.add(btnCancelar);
         
         btnGuardarRegistro.addActionListener(e -> {

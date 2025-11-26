@@ -1,35 +1,96 @@
 package Clase;
 
 public class Cliente {
-		
-		private String nombre;
-		private String dni;
-		
-		public Cliente(String nombre, String dni)
-		{
-			this.nombre = nombre;
-			this.dni = dni;
-		}
-		
-		public String getNombre() {
-			return nombre;
-		}
-		public String getDni() {
-			return dni;
-		}
-		
-		public void comprar() {
-	        System.out.println(nombre + " está realizando una compra.");
-	    }
-		
-		public void saludar() {
-		    System.out.println("Hola, soy " + nombre + " y vengo a comprar.");
-		}
+    private String codCliente;
+    private String nombre;
+    private String apellido;
+    private String dni;
+    private String telefono;
+    private String email;
+    private String direccion;
 
-		public static void main(String[] args) {
-			Cliente cliente1 = new Cliente("Fernando", "12345678");
-			cliente1.saludar();
-	        cliente1.comprar();
-		}
-	}
+    // Constructor completo
+    public Cliente(String codCliente, String nombre, String apellido, String dni, 
+                   String telefono, String email, String direccion) {
+        this.codCliente = codCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.direccion = direccion;
+    }
 
+    // Getters y Setters
+    public String getCodCliente() {
+        return codCliente;
+    }
+
+    public void setCodCliente(String codCliente) {
+        this.codCliente = codCliente;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    // Métodos de negocio
+    public String getNombreCompleto() {
+        return nombre + " " + apellido;
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Cliente: " + getNombreCompleto() + 
+                           " | DNI: " + dni + 
+                           " | Teléfono: " + telefono);
+    }
+
+    @Override
+    public String toString() {
+        return codCliente + " - " + getNombreCompleto();
+    }
+}
